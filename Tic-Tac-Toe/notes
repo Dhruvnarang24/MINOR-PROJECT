@@ -1,0 +1,63 @@
+step 1: first create basic structure of html css and js 
+step 2: now create a main div and inside that div create 2 div with class gameboard and gamescore
+step 3: now, create 9 divs inside the gameboard each representing a unique cell 
+step 4: now in the gamescore div create a p tag showing status of turn and button to reset the game 
+step 5: now set the universal selector margin and padding as 0 
+step 6: now set the css for main container make it in center 
+step 7: now set the css for gameboard display as grid, having template columns as repeat(3,100px) and same for rows so we have 3X3 grid 
+step 8: now set the css for cell class which is gonna change the css for each cell 
+step 9: now set the css for game turn status p tag and reset button 
+step 10: now in js file create 6 variables 
+          1. cells: having all the cells of html
+          2. statusText: pointing to status paragraph tag in html
+          3. resetButton: pointing to reset button in html
+          4. currentPlayer: will show the turn of the player 
+          5. gameBoard: an empty array of 9 elements to store value each cell 
+          6. winPatter: a 2d array having 8 combination of winning pattern 
+step 11: now create a handleClick foreach loop to handle click event and inside it create an event listener for each element 
+          cells.forEach((cell,index)=>{
+            cell.addEventListener("click",()=>{
+            })
+          })
+step 12: now start an if conidtion in which we check if the cell is empty and there is no already winner present 
+          if (gameBoard[index] === "" && !checkWinner()){}
+step 13: now set the currentPlayer symbol in particualar index on gameboard first then on actual html 
+          gameBoard[index]=currentPlayer; this will set in js from checking winner
+          cell.innerHTML=currentPlayer; this will set in actuall dom
+step 14: now create an if condition inside the main if and checkWinner if exist change the statusText.innerHTML
+          if(checkWinner()){
+            statusText.innerHTML=`Player ${currentPlayer} Wins`;
+          }
+step 15: now using .every function (which iterates over all element or cell and returns true if each cell returns true else returns false) to iterate over all the element and check the condition for draw. we check if all cells are filled means all the cells are not equal to "" or empty 
+          else if (gameBoard.every(cell => cell!== "")){
+            statusText.innerHTML="It's a draw";
+          }
+
+step 16: and in the else block we will just change the value of currentPlayer and also the status text 
+          else{
+            currentPlayer=currentPlayer==="X" ?"O":"X";
+            statusText.innerHTML=`Player ${currentPlayer} Turn`;
+          }
+step 17: now we will create a function for checkWinenr which will use .some to check if even one pattern matches with the element 
+          function checkWinner(){
+            return winPatterns.some(
+          
+            )
+          }
+
+step 18: here first we assign the pattern to const [a,b,c] array
+          return winPatterns.some(
+            pattern =>const [a,b,c]=pattern;
+          )
+
+step 19: now we will return the function if the gameBoard[a] position has some element and other positions are equal 
+          return(gameBoard[a] && gameBoard[a]===gameBoard[b] && gameBoard[a]===gameBoard[c]); here it will check if 0,1,2 have all values equal then 3,4,5 and so on till at least one of them returns true due to .some function 
+
+step 20: now for the reset button, add an click event listner on resetButton and inside it reset gameBoard array to empty make each cell ="" reset current player to "X" and also change the statusText 
+          resetButton.addEventListener('click',()=>{
+            gameBoard=["","","","","","","","",""];
+            cells.forEach(cell=>{cell.innerHTML=""});
+            currentPlayer="X";
+            statusText.innerHTML="Player X's turn";
+          })
+    
